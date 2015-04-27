@@ -13,16 +13,18 @@ import java.util.Properties;
 
 public class ProducerExample {
 
-    final static String TOPIC = "sampletopic";
-
-
     public static void main(String[] args) {
+
+        final String TOPIC = args[0];
+
         // define properties for how the Producer finds the cluster, serializes the messages and
         // if appropriate directs the message to a specific Partition
         Properties props = new Properties();
 
         //The first property, “metadata.broker.list” defines where the Producer
         // can find a one or more Brokers to determine the Leader for each topic
+        // No need to worry about figuring out which Broker is the leader for the topic (and partition),
+        // the Producer knows how to connect to the Broker and ask for the meta data then connect to the correct Broker
         props.put("metadata.broker.list", "localhost:9092,broker:9092");
 
         // The second property “serializer.class” defines what Serializer to use when preparing the message for

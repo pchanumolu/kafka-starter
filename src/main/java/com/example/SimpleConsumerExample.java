@@ -16,6 +16,20 @@ import java.util.*;
  * Created by Pradeep on 3/31/15.
  */
 
+/**
+ * The main reason to use a SimpleConsumer implementation is you want greater control over partition consumption
+ * than Consumer Groups give you.
+ * For example you want to:
+    1.Read a message multiple times
+    2.Consume only a subset of the partitions in a topic in a process
+    3.Manage transactions to make sure a message is processed once and only once
+
+ Downsides of using SimpleConsumer
+    1.The SimpleConsumer does require a significant amount of work not needed in the Consumer Groups:
+    2.You must keep track of the offsets in your application to know where you left off consuming.
+    3.You must figure out which Broker is the lead Broker for a topic and partition
+    4.You must handle Broker leader changes
+ */
 
 /**
  * Steps for using a SimpleConsumer
