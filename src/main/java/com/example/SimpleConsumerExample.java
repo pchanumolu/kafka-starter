@@ -207,7 +207,8 @@ public class SimpleConsumerExample {
             }
             FetchRequest req = new FetchRequestBuilder()
                     .clientId(clientName)
-                    .addFetch(topic, partition, readOffset, 100000) // Note: this fetchSize of 100000 might need to be increased if large batches are written to Kafka
+                    .addFetch(topic, partition, readOffset, 100000) // Note: this fetchSize of 100000 might need to be
+                    // increased if large batches are written to Kafka
                     .build();
             FetchResponse fetchResponse = consumer.fetch(req);
 
@@ -219,7 +220,8 @@ public class SimpleConsumerExample {
                 if (numErrors > 5) break;
                 if (code == ErrorMapping.OffsetOutOfRangeCode())  {
                     // We asked for an invalid offset. For simple case ask for the last element to reset
-                    readOffset = getLastOffset(consumer,topic, partition, kafka.api.OffsetRequest.LatestTime(), clientName);
+                    readOffset = getLastOffset(consumer,topic, partition,
+                            kafka.api.OffsetRequest.LatestTime(), clientName);
                     continue;
                 }
                 consumer.close();
