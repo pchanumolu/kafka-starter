@@ -271,4 +271,5 @@ public class SimpleConsumerExample {
         }
         if (consumer != null) consumer.close();
     }
+
 }

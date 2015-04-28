@@ -37,7 +37,7 @@ public class ProducerExample {
         // The third property  "partitioner.class" defines what class to use to determine which Partition in the
         // Topic the message is to be sent to. This is optional, but for any non-trivial implementation you are going
         // to want to implement a partitioning scheme.
-        props.put("partitioner.class", "example.producer.SimplePartitioner");
+        props.put("partitioner.class", "com.example.PartitionerExample");
 
         // The last property "request.required.acks" tells Kafka that you want your Producer to require an
         // acknowledgement from the Broker that the message was received. Without this setting the Producer will
